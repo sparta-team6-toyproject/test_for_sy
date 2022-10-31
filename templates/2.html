@@ -25,7 +25,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <title>허니-문: 신혼여행지 추천 페이지</title>
+    <title>허니-문: 신혼여행지 추천 페이지 2</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
@@ -77,6 +77,12 @@
         width: 180px;
         height: 50px;
         margin: 15px;
+      }
+
+      .mypost > div > input {
+        width: 85%;
+        border: none;
+        text-align: center;
       }
 
       .search_input {
@@ -139,133 +145,11 @@
 
     <div class="mypost">
       <div>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="유럽"
-        >
-          #유럽
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="아시아"
-        >
-          #아시아
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="아메리카"
-        >
-          #아메리카
-        </button>
+        <input
+          id="search_result"
+          placeholder="검색어 리스트가 잘 들어오는지 확인해보자"
+        />
       </div>
-
-      <div>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="바다"
-        >
-          #바다
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="산"
-        >
-          #산
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="도심"
-        >
-          #도심
-        </button>
-      </div>
-
-      <div>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="역사유적"
-        >
-          #역사유적
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="박물관"
-        >
-          #박물관
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="미술관"
-        >
-          #미술관
-        </button>
-      </div>
-
-      <div>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="쇼핑"
-        >
-          #쇼핑
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="액티비티"
-        >
-          #액티비티
-        </button>
-        <button
-          id="tag"
-          onclick="save_input(this)"
-          type="button"
-          class="btn btn-light"
-          value="접근성"
-        >
-          #접근성
-        </button>
-      </div>
-    </div>
-
-    <div class="search_input">
-      <input id="input" placeholder="검색어를 선택해주세요." />
-      <a onclick="movToResult()" href="2.html">
-        <button onclick="search()" type="button" class="btn btn-secondary">
-          검색
-        </button>
-      </a>
     </div>
   </body>
 </html>
