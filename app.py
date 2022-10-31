@@ -1,10 +1,11 @@
+
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 client = MongoClient(
     'mongodb+srv://test:sparta@cluster0.rv3ttod.mongodb.net/test')
-db = client.dbsparta
+db = client.hanghae_10_preliminary
 
 
 @app.route('/')
