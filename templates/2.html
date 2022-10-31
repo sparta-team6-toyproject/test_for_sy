@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:title" content="신혼여행 어디로?" />
+    <meta property="og:description" content="취향따라 추천해주는 신혼여행지!" />
+    <meta
+      property="og:image"
+      content="https://blog.kakaocdn.net/dn/ol4hs/btq30EzjFa0/Z1ERRx6pj987WICgYyXlMk/img.png"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>허니-문: 신혼여행지 추천 페이지</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Noto Serif KR", serif;
+      }
+      .mypic {
+        width: 100%;
+        height: 500px;
+
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://blog.kakaocdn.net/dn/ol4hs/btq30EzjFa0/Z1ERRx6pj987WICgYyXlMk/img.png");
+        background-position: center 5%;
+        background-size: cover;
+
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .search_input {
+        width: 65%;
+        margin: 50px auto 20px auto;
+        box-shadow: 0px 0px 3px 0px black;
+        border-radius: 15px;
+        padding: 20px;
+
+        display: flex;
+        align-items: row;
+        justify-content: space-between;
+      }
+
+      .search_input > input {
+        width: 85%;
+        border: none;
+        text-align: left;
+      }
+
+      input:hover {
+        cursor: default;
+      }
+
+      input:focus {
+        outline: none;
+      }
+    </style>
+
+    <script>
+      let tag_list = localStorage.getItem('tag_list')
+      console.log(tag_list)
+
+      function show_list(){
+        $("#input").val(tag_list);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="mypic">
+      <h1>허니-문</h1>
+      <p>당신을 위한 신혼여행지 추천 페이지!</p>
+    </div>
+
+    <div class="search_input">
+      <button onclick='show_list()'>클릭!</button>
+      <input id="input" placeholder="잘 들어오는지 확인해보자!" />
+      </a>
+    </div>
+  </body>
+</html>

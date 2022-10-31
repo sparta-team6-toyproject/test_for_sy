@@ -106,8 +106,7 @@
       }
     </style>
 
-    <script src="main.js" defer></script>
-    <!-- <script>
+    <script>
       let input_list = [];
       function save_input(val) {
         let tag = $(val).val();
@@ -119,17 +118,9 @@
       function search() {
         let search_list = $("#input").val();
         console.log(search_list);
-        $.ajax({
-          type: "POST",
-          url: "/honeymoon",
-          data: { search_give: search_list },
-          success: function (response) {
-            alert(response["msg"]);
-            window.location.reload();
-          },
-        });
+        localStorage.setItem("tag_list", search_list);
       }
-    </script> -->
+    </script>
   </head>
   <body>
     <div class="mypic">
