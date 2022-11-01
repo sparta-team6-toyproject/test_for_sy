@@ -55,7 +55,8 @@ for code in city_code:
             img_list.append(img['src'])
 
         doc = {
-            'city': [city_kor, city_eng],
+            'city_kor': city_kor,
+            'city_eng': city_eng,
             'country': country,
             'desc': desc,
             'img_url': img_list}
@@ -79,9 +80,9 @@ for code in city_code:
         site_imgs.append(pic['src'])
 
         db.travel.update_one(
-            {'city': city_kor}, {'$set': {'site_names': site_names}})
+            {'city_kor': city_kor}, {'$set': {'site_names': site_names}})
         db.travel.update_one(
-            {'city': city_kor}, {'$set': {'site_imgs': site_imgs}})
+            {'city_kor': city_kor}, {'$set': {'site_imgs': site_imgs}})
 
     # 맛집 정보 긁어오기
     soup_3 = BeautifulSoup(food.text, 'html.parser')
@@ -101,9 +102,9 @@ for code in city_code:
         rest_imgs.append(rest_pic['src'])
 
         db.travel.update_one(
-            {'city': city_kor}, {'$set': {'rest_names': rest_names}})
+            {'city_kor': city_kor}, {'$set': {'rest_names': rest_names}})
         db.travel.update_one(
-            {'city': city_kor}, {'$set': {'rest_imgs': rest_imgs}})
+            {'city_kor': city_kor}, {'$set': {'rest_imgs': rest_imgs}})
 
     # 쇼핑몰 정보 긁어오기
     soup_4 = BeautifulSoup(shopping.text, 'html.parser')
@@ -123,38 +124,37 @@ for code in city_code:
         mall_imgs.append(mall_pic['src'])
 
         db.travel.update_one(
-            {'city': city_kor}, {'$set': {'mall_names': mall_names}})
+            {'city_kor': city_kor}, {'$set': {'mall_names': mall_names}})
         db.travel.update_one(
-            {'city': city_kor}, {'$set': {'mall_imgs': mall_imgs}})
+            {'city_kor': city_kor}, {'$set': {'mall_imgs': mall_imgs}})
 
 
 db.travel.update_one(
-    {'city': '루체른'}, {'$set': {'tag': ['유럽', '산', '도심', '역사유적', '미술관']}})
+    {'city_kor': '루체른'}, {'$set': {'tag': ['유럽', '산', '도심', '역사유적', '미술관']}})
 db.travel.update_one(
-    {'city': '마드리드'}, {'$set': {'tag': ['유럽', '도심', '역사유적']}})
+    {'city_kor': '마드리드'}, {'$set': {'tag': ['유럽', '도심', '역사유적']}})
 db.travel.update_one(
-    {'city': '로마'}, {'$set': {'tag': ['유럽', '도심', '박물관', '미술관']}})
+    {'city_kor': '로마'}, {'$set': {'tag': ['유럽', '도심', '박물관', '미술관']}})
 db.travel.update_one(
-    {'city': '아테네'}, {'$set': {'tag': ['유럽', '산', '도심', '역사유적', '박물관']}})
+    {'city_kor': '아테네'}, {'$set': {'tag': ['유럽', '산', '도심', '역사유적', '박물관']}})
 db.travel.update_one(
-    {'city': '파리'}, {'$set': {'tag': ['유럽', '도심', '역사유적', '박물관', '미술관']}})
+    {'city_kor': '파리'}, {'$set': {'tag': ['유럽', '도심', '역사유적', '박물관', '미술관']}})
 db.travel.update_one(
-    {'city': '하와이'}, {'$set': {'tag': ['아메리카', '바다', '쇼핑', '액티비티']}})
+    {'city_kor': '하와이'}, {'$set': {'tag': ['아메리카', '바다', '쇼핑', '액티비티']}})
 db.travel.update_one(
-    {'city': '칸쿤'}, {'$set': {'tag': ['아메리카', '바다', '액티비티']}})
+    {'city_kor': '칸쿤'}, {'$set': {'tag': ['아메리카', '바다', '액티비티']}})
 db.travel.update_one(
-    {'city': '뉴욕'}, {'$set': {'tag': ['아메리카', '도심', '박물관', '미술관', '쇼핑']}})
+    {'city_kor': '뉴욕'}, {'$set': {'tag': ['아메리카', '도심', '박물관', '미술관', '쇼핑']}})
 db.travel.update_one(
-    {'city': '몰디브'}, {'$set': {'tag': ['아시아', '바다']}})
+    {'city_kor': '몰디브'}, {'$set': {'tag': ['아시아', '바다']}})
 db.travel.update_one({'name': '몰디브'}, {'$set': {'country': '몰디브'}})
 db.travel.update_one(
-    {'city': '발리'}, {'$set': {'tag': ['아시아', '바다', '산', '액티비티']}})
+    {'city_kor': '발리'}, {'$set': {'tag': ['아시아', '바다', '산', '액티비티']}})
 db.travel.update_one(
-    {'city': '보라카이'}, {'$set': {'tag': ['아시아', '바다', '액티비티']}})
+    {'city_kor': '보라카이'}, {'$set': {'tag': ['아시아', '바다', '액티비티']}})
 db.travel.update_one(
-    {'city': '세부'}, {'$set': {'tag': ['아시아', '바다', '액티비티']}})
+    {'city_kor': '세부'}, {'$set': {'tag': ['아시아', '바다', '액티비티']}})
 db.travel.update_one(
-    {'city': '다낭'}, {'$set': {'tag': ['아시아', '바다', '역사유적', '접근성']}})
-
+    {'city_kor': '다낭'}, {'$set': {'tag': ['아시아', '바다', '역사유적', '접근성']}})
 db.travel.update_one(
-    {'city': '몰디브'}, {'$set': {'country': '몰디브'}})
+    {'city_kor': '몰디브'}, {'$set': {'country': '몰디브'}})

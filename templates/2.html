@@ -56,7 +56,7 @@
         justify-content: center;
       }
 
-      .search_input {
+      .city-box {
         width: 65%;
         margin: 50px auto 20px auto;
         box-shadow: 0px 0px 3px 0px black;
@@ -67,28 +67,53 @@
         align-items: row;
         justify-content: space-between;
       }
-
-      .search_input > input {
-        width: 85%;
-        border: none;
-        text-align: left;
-      }
-
-      input:hover {
-        cursor: default;
-      }
-
-      input:focus {
-        outline: none;
-      }
     </style>
 
     <script>
-      let tag_list = sessionStorage.getItem('tag_list')
-      console.log(tag_list)
+      let tag_list = sessionStorage.getItem("tag_list").split(",");
+      let show_city = [];
+      console.log(tag_list);
 
-      function show_list(){
+      function show_list() {
         $("#input").val(tag_list);
+      }
+
+      $(document).ready(function () {
+        show_destination();
+      });
+      function show_destination() {
+        $.ajax({
+          type: "GET",
+          url: "/travel",
+          data: {},
+          success: function (response) {
+            let result = response;
+            console.log(result);
+            for (let i = 0; i < result.length; i++) {
+              let city_kor = result[i]["city_kor"];
+              let city_eng = result[i]["city_eng"];
+              let country = result[i]["country"];
+              let desc = result[i]["desc"];
+              let img_url = result[i]["img_url"];
+              let tag_city = result[i]["tag"];
+
+              let tag_inter = tag_list.filter((x) => tag_city.includes(x));
+              console.log("tag_inter :", tag_inter);
+              if (tag_inter.length >= 2) {
+                let temp_html = `
+                <p>${city_kor}</p>
+                <p>${country}</p>
+                <p>${desc}</p>
+                <img url="${img_url[0]}">
+                <img url="${img_url[1]}">
+                <img url="${img_url[2]}">
+                `;
+                $("#city-box").append(temp_html);
+              }
+            }
+            console.log("show_city:", show_city);
+          },
+        });
       }
     </script>
   </head>
@@ -98,10 +123,6 @@
       <p>당신을 위한 신혼여행지 추천 페이지!</p>
     </div>
 
-    <div class="search_input">
-      <button onclick='show_list()'>클릭!</button>
-      <input id="input" placeholder="잘 들어오는지 확인해보자!" />
-      </a>
-    </div>
+    <div id="city-box" class="city-box"></div>
   </body>
 </html>
