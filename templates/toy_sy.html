@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>허니문 추천</title>
+</head>
+<style>
+    .main_title {
+        background-image: url('https://search.pstatic.net/common?src=https://dbscthumb-phinf.pstatic.net/5885_000_14/20211005191629685_0FLZ7LRKD.jpg/fb437_3_i1.jpg?type=w540_fst&type=f520_288_travelsearch');
+        background-position: center;
+        background-size: cover;
+
+        color: white;
+
+        padding: 10px 10px 10px 10px;
+    }
+
+    .main_img {
+        width: 300px;
+        margin: 20px 0 0 10px;
+    }
+
+    .card-group {
+
+    }
+
+    h2 {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .card {
+        margin: 10px 10px 10px 10px;
+
+        /*background-color: red;*/
+    }
+    .card-title {
+
+    }
+    .head2 {
+        padding: 20px 10px 10px 15px;
+    }
+
+    .prac {
+        display: inline-block;
+        width: 300px;
+        border: 1px solid;
+    }
+</style>
+<script>
+    sessionStorage.getItem("city_kor", "하와이")
+    let exam = "루체른"
+    $(document).ready(function () {
+        show_main();
+    });
+
+    function show_main() {
+        $.ajax({
+            type: "GET",
+            url: "/travel",
+            data: {},
+            success: function (response) {
+                let rows = response['travel']
+
+                // 메인타이틀 ajax
+                for (i = 0; i < rows.length; i++) {
+                    let title_kor = rows[i]['city_kor']
+                    let title_eng = rows[i]['city_eng']
+
+                    if (exam == rows[i]['city_kor']) {
+                        let temp_html = `<div class="main_title">
+                                            <h1 class="card-title">${title_kor}</h1>
+                                            <h1>${title_eng}</h1>
+                                        </div>`
+                        $('#main_title').append(temp_html)
+                    }
+                }
+
+                // 메인이미지 ajax
+                for (i = 0; i < rows.length; i++) {
+                    let img_url = rows[i]['img_url']
+
+                    if (exam == rows[i]['city_kor']) {
+                        let temp_html = `<div className = "card" class="main_img">
+                                            <img src = "${img_url[0]}" className = "card-img-top" alt = "메인이미지1" >
+                                         </div>
+                                         <div className = "card" class="main_img">
+                                            <img src = "${img_url[1]}" className = "card-img-top" alt = "메인이미지2" >
+                                         </div>
+                                         <div className = "card" class="main_img">
+                                            <img src = "${img_url[2]}" className = "card-img-top" alt = "메인이미지3" >
+                                         </div>
+                                         <div className = "card" class="main_img">
+                                            <img src = "${img_url[3]}" className = "card-img-top" alt = "메인이미지4" >
+                                         </div>
+                                         <div className = "card" class="main_img">
+                                            <img src = "${img_url[4]}" className = "card-img-top" alt = "메인이미지5" >
+                                         </div>`
+                        $('#main_img').append(temp_html)
+                    }
+                }
+
+                // 관광명소 ajax
+                for (i = 0; i < rows.length; i++) {
+                    let site_img = rows[i]['site_imgs']
+                    let site_name = rows[i]['site_names']
+
+                    if (exam == rows[i]['city_kor']) {
+                        let temp_html = `<div class="card">
+                                            <img src="${site_img[0]}" class="card-img-top" alt="첫번째 관광명소 이미지">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">${site_name[0]}</h5>
+                                                  <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                                <div class="card">
+                                            <img src="${site_img[1]}" class="card-img-top" alt="두번째 관광명소 이미지">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">${site_name[1]}</h5>
+                                                  <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${site_img[2]}" class="card-img-top" alt="세번째 관광명소 이미지">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">${site_name[2]}</h5>
+                                                  <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${site_img[3]}" class="card-img-top" alt="네번째 관광명소 이미지">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">${site_name[3]}</h5>
+                                                  <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${site_img[4]}" class="card-img-top" alt="다섯번째 관광명소 이미지">
+                                                <div class="card-body">
+                                                  <h5 class="card-title">${site_name[4]}</h5>
+                                                  <p class="card-text"></p>
+                                                </div>
+                                            </div>`
+                        $('#site').append(temp_html)
+                    }
+                }
+
+                // 식당 ajax
+                for (i = 0; i < rows.length; i++) {
+                    let rest_img = rows[i]['rest_imgs']
+                    let rest_name = rows[i]['rest_names']
+
+                    if (exam == rows[i]['city_kor']) {
+                        let temp_html = `<div class="card">
+                                            <img src="${rest_img[0]}" class="card-img-top" alt="첫번째 식당 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${rest_name[0]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${rest_img[1]}" class="card-img-top" alt="두번째 식당 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${rest_name[1]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${rest_img[2]}" class="card-img-top" alt="세번째 식당 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${rest_name[2]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${rest_img[3]}" class="card-img-top" alt="네번째 식당 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${rest_name[3]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${rest_img[4]}" class="card-img-top" alt="다섯번째 식당 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${rest_name[4]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>`
+                        $('#rest').append(temp_html)
+                    }
+                }
+
+                // 기념품 ajax
+                for (i = 0; i < rows.length; i++) {
+                    let mall_img = rows[i]['mall_imgs']
+                    let mall_name = rows[i]['mall_names']
+
+                    if (exam == rows[i]['city_kor']) {
+                        let temp_html = `<div class="card">
+                                            <img src="${mall_img[0]}" class="card-img-top" alt="첫번째 기념품 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${mall_name[0]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${mall_img[1]}" class="card-img-top" alt="두번째 기념품 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${mall_name[1]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${mall_img[2]}" class="card-img-top" alt="세번째 기념품 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${mall_name[2]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${mall_img[3]}" class="card-img-top" alt="네번째 기념품 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${mall_name[3]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                            <img src="${mall_img[4]}" class="card-img-top" alt="다섯번째 기념품 이미지">
+                                                <div class="card-body">
+                                                <h5 class="card-title">${mall_name[4]}</h5>
+                                                <p class="card-text"></p>
+                                                </div>
+                                            </div>`
+                        $('#mall').append(temp_html)
+                    }
+                }
+            }
+        })
+    }
+</script>
+<body>
+<!--뒤로가기 버튼-->
+<button onclick="history.back()" type="button" class="btn btn-outline-dark">뒤로 가기</button>
+
+<!--    메인타이틀, 날씨-->
+<div class="card-group">
+    <div class="card" id="main_title">
+
+    </div>
+    <div class="card">
+        <h5 class="card-title">현재날씨</h5>
+        <img src="..." class="card-img-top" alt="날씨, 기온">
+        <div class="card-body">
+            <p class="card-text"></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+    </div>
+</div>
+
+<!--    메인 이미지-->
+<div class="card-group" id="main_img">
+
+</div>
+
+<!--    관광명소-->
+<div>
+    <h2 class="head2">관광명소</h2>
+</div>
+<div class="card-group" id="site">
+
+</div>
+
+<!--맛집-->
+<h2 class="head2">맛집</h2>
+<div class="card-group" id="rest">
+
+</div>
+
+<!--기념품-->
+<h2 class="head2">기념품</h2>
+<div class="card-group" id="mall">
+    <div>
+
+    </div>
+
+</div>
+
+<!--<ul class="prac">-->
+
+<!--            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />-->
+<!--            <a>첫번째 구글 이미지</a>-->
+<!--</ul>-->
+<!--<ul class="prac">-->
+<!--            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />-->
+<!--            <a>두번째 구글 이미지</a>-->
+
+</ul>
+</body>
+</html>
