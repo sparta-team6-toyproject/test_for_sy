@@ -109,6 +109,10 @@
       console.log(search_list);
       sessionStorage.setItem("tag_list", search_list);
     }
+
+    // function reset() {
+    //   $("#input").empty();
+    // }
   </script>
 </head>
 
@@ -170,6 +174,9 @@
 
   <div class="search_input">
     <input id="input" placeholder="검색어를 선택해주세요." />
+    <!-- <button onclick="reset()" type="button" class="btn btn-secondary">
+      초기화
+    </button> -->
     <a href="/tg">
       <button onclick="search()" type="button" class="btn btn-secondary">
         검색

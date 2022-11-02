@@ -79,6 +79,7 @@
                 url: "/travel_tg",
                 data: {},
                 success: function (response) {
+                    console.log(response);
                     let rows = response
                     for (let i = 0; i < rows.length; i++) {
                         let city_kor = rows[i]['city_kor']
@@ -93,9 +94,9 @@
                         if (difference.length >= 2) {
                             temp_html = `<div class="card">
                                             <div class="card-body">
-                                               <a href="/sy">
+                                               <a href="/${city_kor}">
                                                <h3 class="card-name">${city_kor}</h3>
-                                               <h5 class="card-name"><a href="/sy">${city_eng}</h5></a>
+                                               <h5 class="card-name"><a href="/${city_kor}">${city_eng}</h5></a>
                                                         <h5 class="card-nations">${country}</h5>
                                                 <i class="card-desc">${desc}</i>
                                                 <div class="card-kewords-group">
@@ -128,16 +129,12 @@
                             console.log("없음")
                         }
 
-                        sessionStorage.setItem("city_list", city_kor)
 
                     }
 
                 }
             })
         };
-
-
-
     </script>
 </head>
 

@@ -56,8 +56,8 @@
     }
 </style>
 <script>
-    sessionStorage.getItem("city_kor", "하와이")
-    let exam = "루체른"
+    let exam = sessionStorage.getItem("city_list")
+    console.log(exam)
     $(document).ready(function () {
         show_main();
     });
